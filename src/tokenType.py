@@ -1,0 +1,16 @@
+class TokenType:
+    # attribute list of all the valid token types, used for token type checking
+    INT = "INT"
+    REAL = "REAL"
+    PRINT = "PRINT"
+    IDENTIFIER = "IDENTIFIER"
+    INTEGER_LITERAL = "INTEGER_LITERAL"
+    REAL_LITERAL = "REAL_LITERAL"
+    PLUS = "PLUS"
+    MINUS = "MINUS"
+    MULTIPLY = "MULTIPLY"
+    DIVIDE = "DIVIDE"
+    ASSIGN = "ASSIGN"
+    LEFT_PAREN = "LEFT_PAREN"
+    RIGHT_PAREN = "RIGHT_PAREN"
+    SEMICOLON = "SEMICOLON"
