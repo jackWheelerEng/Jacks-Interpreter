@@ -25,14 +25,14 @@ class Lexer:
     }
 
     # constructor
-    def __init__(self, source_text):
+    def __init__(self, source_text: str) -> None:
         self._source = source_text
         self._index = 0
         self._line = 1
         self._tokens = []
 
     # walks the source text once and builds a list of Token objects
-    def tokenize(self):
+    def tokenize(self) -> list[Token]:
         self._index = 0
         self._line = 1
         self._tokens = []
