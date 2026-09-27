@@ -1,8 +1,10 @@
 import sys
 from sourceFileReader import SourceFileReader
+from lexer import Lexer, LexicalError
+from token import Token
 
 
-def display_loaded_source(source_reader):
+def display_loaded_source(source_reader: SourceFileReader) -> None:
     print("Loaded source file: " + source_reader.get_file_name())
     print("------")
 
@@ -12,6 +14,13 @@ def display_loaded_source(source_reader):
 
     print("------")
     print(str(source_reader.get_line_count()) + " lines read.")
+
+
+def display_tokens(tokens: list[Token]) -> None:
+    print("TOKENS")
+    print("------")
+    for token in tokens:
+        print(token)
 
 
 def main():
@@ -29,6 +38,16 @@ def main():
         return
 
     display_loaded_source(source_reader)
+
+    lexer = Lexer(source_reader.get_source_text())
+    try:
+        tokens = lexer.tokenize()
+    except LexicalError as e:
+        print(str(e))
+        return
+
+    print()
+    display_tokens(tokens)
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ MiniLang interpreter for CS 3210 Project 2.
 
 ## Current stage
 
-This repository currently reads a MiniLang source file and holds the text for a later lexical analyzer. Tokenizing, parsing, and execution are not implemented yet.
+This repository currently reads a MiniLang source file and tokenizes it. Parsing and execution are not implemented yet.
 
 ## How to run
 
