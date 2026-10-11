@@ -1,4 +1,4 @@
-from token import Token
+from token import Token 
 from tokenType import TokenType
 
 class LexicalError(Exception):
