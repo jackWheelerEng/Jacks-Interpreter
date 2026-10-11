@@ -1,0 +1,7 @@
+int numerator;
+int denominator;
+int result;
+numerator = 20;
+denominator = 0;
+result = numerator / denominator;
+print(result);
