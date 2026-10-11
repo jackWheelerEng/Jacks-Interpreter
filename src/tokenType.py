@@ -1,4 +1,7 @@
-class TokenType:
+from enum import StrEnum
+
+
+class TokenType(StrEnum):
     # attribute list of all the valid token types, used for token type checking
     INT = "INT"
     REAL = "REAL"

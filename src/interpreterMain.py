@@ -2,6 +2,7 @@ import sys
 from sourceFileReader import SourceFileReader
 from lexer import Lexer, LexicalError
 from token import Token
+from syntaxTree import SyntaxTree, Node
 
 
 def display_loaded_source(source_reader: SourceFileReader) -> None:
@@ -22,6 +23,11 @@ def display_tokens(tokens: list[Token]) -> None:
     for token in tokens:
         print(token)
 
+
+def display_syntax_tree(syntax_tree: SyntaxTree):
+    print("SYNTAX TREE")
+    print("------")
+    syntax_tree.printTree()
 
 def main():
     if len(sys.argv) < 2:
@@ -48,6 +54,7 @@ def main():
 
     print()
     display_tokens(tokens)
+    display_syntax_tree(syntax_tree)
 
 
 if __name__ == "__main__":
