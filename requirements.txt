@@ -1,0 +1,4 @@
+# MiniLang interpreter dependencies
+# The lexer and file reader use the Python standard library only.
+
+anytree==2.13.0

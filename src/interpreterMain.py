@@ -4,6 +4,8 @@ from lexer import Lexer, LexicalError
 from token import Token
 from parser import parse, SyntaxErrorMiniLang
 from syntaxTree import SyntaxTree
+from semanticAnalyzer import analyze, SemanticError
+from interpreter import Interpreter, RuntimeErrorMiniLang
 
 
 def display_loaded_source(source_reader: SourceFileReader) -> None:
@@ -29,6 +31,12 @@ def display_syntax_tree(syntax_tree: SyntaxTree):
     print("SYNTAX TREE")
     print("------")
     syntax_tree.printTree()
+
+
+def display_symbol_table(symbol_table):
+    print("SYMBOL TABLE")
+    print("------")
+    print(symbol_table.display())
 
 def main():
     if len(sys.argv) < 2:
@@ -65,6 +73,28 @@ def main():
     syntax_tree = SyntaxTree(program)
     print()
     display_syntax_tree(syntax_tree)
+
+    try:
+        symbol_table = analyze(program)
+    except SemanticError as e:
+        print(str(e))
+        return
+
+    interpreter = Interpreter(symbol_table)
+    print()
+    print("PROGRAM OUTPUT")
+    print("------")
+    try:
+        output = interpreter.run(program)
+    except RuntimeErrorMiniLang as e:
+        print(str(e))
+        return
+
+    if not output:
+        print("(none)")
+
+    print()
+    display_symbol_table(symbol_table)
 
 
 if __name__ == "__main__":
