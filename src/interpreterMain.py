@@ -2,7 +2,8 @@ import sys
 from sourceFileReader import SourceFileReader
 from lexer import Lexer, LexicalError
 from token import Token
-from syntaxTree import SyntaxTree, Node
+from parser import parse, SyntaxErrorMiniLang
+from syntaxTree import SyntaxTree
 
 
 def display_loaded_source(source_reader: SourceFileReader) -> None:
@@ -54,6 +55,15 @@ def main():
 
     print()
     display_tokens(tokens)
+
+    try:
+        program = parse(tokens)
+    except SyntaxErrorMiniLang as e:
+        print(str(e))
+        return
+
+    syntax_tree = SyntaxTree(program)
+    print()
     display_syntax_tree(syntax_tree)
 
 
