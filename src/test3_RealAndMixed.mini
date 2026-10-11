@@ -1,0 +1,11 @@
+real base;
+real height;
+real area;
+int bonus;
+base = 4.0;
+height = 3.0;
+area = base * height;
+print(area);
+bonus = 10;
+area = area + bonus;
+print(area);
