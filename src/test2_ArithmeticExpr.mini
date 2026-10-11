@@ -1,0 +1,9 @@
+int r1;
+int r2;
+int r3;
+r1 = 10 - 5 - 2;
+print(r1);
+r2 = 2 + 3 * 4;
+print(r2);
+r3 = (2 + 3) * 4;
+print(r3);
