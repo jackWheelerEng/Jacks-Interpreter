@@ -38,12 +38,18 @@ def display_symbol_table(symbol_table):
     print("------")
     print(symbol_table.display())
 
+
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python interpreterMain.py <source-file.mini>")
+    args = sys.argv[1:]
+    debug = "--debug" in args
+    if debug:
+        args = [arg for arg in args if arg != "--debug"]
+
+    if len(args) < 1:
+        print("Usage: python interpreterMain.py <source-file.mini> [--debug]")
         return
 
-    file_name = sys.argv[1]
+    file_name = args[0]
     source_reader = SourceFileReader()
 
     try:
@@ -52,7 +58,8 @@ def main():
         print("Error: " + str(e))
         return
 
-    display_loaded_source(source_reader)
+    if debug:
+        display_loaded_source(source_reader)
 
     lexer = Lexer(source_reader.get_source_text())
     try:
@@ -61,8 +68,9 @@ def main():
         print(str(e))
         return
 
-    print()
-    display_tokens(tokens)
+    if debug:
+        print()
+        display_tokens(tokens)
 
     try:
         program = parse(tokens)
@@ -70,9 +78,10 @@ def main():
         print(str(e))
         return
 
-    syntax_tree = SyntaxTree(program)
-    print()
-    display_syntax_tree(syntax_tree)
+    if debug:
+        syntax_tree = SyntaxTree(program)
+        print()
+        display_syntax_tree(syntax_tree)
 
     try:
         symbol_table = analyze(program)
@@ -81,20 +90,22 @@ def main():
         return
 
     interpreter = Interpreter(symbol_table)
-    print()
-    print("PROGRAM OUTPUT")
-    print("------")
+    if debug:
+        print()
+        print("PROGRAM OUTPUT")
+        print("------")
+
     try:
         output = interpreter.run(program)
     except RuntimeErrorMiniLang as e:
         print(str(e))
         return
 
-    if not output:
-        print("(none)")
-
-    print()
-    display_symbol_table(symbol_table)
+    if debug:
+        if not output:
+            print("(none)")
+        print()
+        display_symbol_table(symbol_table)
 
 
 if __name__ == "__main__":

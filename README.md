@@ -73,3 +73,7 @@ python3 main.py tests/section14/test01_basic_declaration_int.mini
 
 
 Pass any MiniLang source file as the first argument. If the file is missing or cannot be opened, the program prints an error and exits without a stack trace.
+
+---
+
+This codebase was made with assistance from Grok 4.6.

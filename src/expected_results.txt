@@ -1,0 +1,49 @@
+Expected results for the MiniLang test programs.
+
+program1.mini
+  Output: 50
+
+test1_BasicDeclaration.mini
+  Covers: basic declaration and assignment, int variables
+  Output: 10
+
+test2_ArithmeticExpr.mini
+  Covers: arithmetic, precedence, parentheses
+  Output:
+    3
+    14
+    20
+
+test3_RealAndMixed.mini
+  Covers: real variables, mixed int and real expressions
+  Output:
+    12
+    22
+
+test4_UndeclaredVar.mini
+  Covers: undeclared variable
+  Error: Semantic Error on line 2: Variable 'count' is not declared.
+
+test5_duplicateDeclaration.mini
+  Covers: duplicate declaration
+  Error: Semantic Error on line 2: Variable 'score' is already declared.
+
+test6_uninitializedVar.mini
+  Covers: uninitialized variable
+  Error: Semantic Error on line 3: Variable 'x' is used before being initialized.
+
+test7_SyntaxError.mini
+  Covers: syntax error (missing semicolon)
+  Error: Syntax Error on line 3: Expected ';' after assignment but found 'print'
+
+test8_TypeError.mini
+  Covers: type error (real assigned to int)
+  Error: Semantic Error on line 2: Cannot assign real value to int variable 'count'.
+
+test9_LexicalError.mini
+  Covers: lexical error
+  Error: Lexical Error on line 2: Unknown character '#'
+
+test10_DivByZero.mini
+  Covers: division by zero
+  Error: Runtime Error on line 6: Division by zero.
